@@ -1,6 +1,7 @@
 import java.util.Date;
 
 
+//Journals have an ISSN number and must be in the newspapers section.
 public class Newspaper extends LibraryCollection {
     private int ISSN;
 

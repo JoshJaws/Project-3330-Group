@@ -1,7 +1,10 @@
 import librarypackage.SSN;
 import java.util.*;
 
-
+/*
+ * Technicians aer assigned a library to supervise. For that library, they put back items in the right sections and
+ * sort the sections (not implemented yet)
+ */
 public class Technician extends Employee {
     Library libraryToSupervise;
 

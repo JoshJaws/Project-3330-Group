@@ -2,22 +2,24 @@ import java.util.*;
 import librarypackage.SSN;
 
 
+/*
+ * Members can borrow up to 5 items from a library. When they borrow an item, a timer is set and they will be fined
+ * $1 for every day after 2 weeks borrowed, and the price of the item if they do not return the item within 1 month.
+ * Members can be Students or Professors, or they will be an external member if they are neither.
+ */
 public class Member extends Person {
     protected Hashtable<LibraryCollection, Integer> materials;
-    protected int [] dayCount;
     protected double moneyOwed;
     protected int ID;
 
     Member() {
         super();
         materials = new Hashtable<>();
-        dayCount = null;
         moneyOwed = 0;
     }
     Member(String name, String address, Date dob, String email, SSN ssn) {
         super(name, address, dob, email, ssn);
         materials = new Hashtable<>();
-        dayCount = null;
         moneyOwed = 0;
         this.ID =this.toString().hashCode();
     }

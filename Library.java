@@ -12,16 +12,16 @@ enum Section {
 
 public class Library {
     //ondutyTechnician controls adding books, ondutyTechnican handles renting books
-    protected List<LibraryCollection> artSection;
-    protected List<LibraryCollection> scienceSection;
-    protected List<LibraryCollection> newspaperSection;
-    protected List<LibraryCollection> lawSection;
+    public List<LibraryCollection> artSection;
+    public List<LibraryCollection> scienceSection;
+    public List<LibraryCollection> newspaperSection;
+    public List<LibraryCollection> lawSection;
 
-    protected List<Member> members;
-    protected List<Employee> employees;
+    public List<Member> members;
+    public List<Employee> employees;
 
-    protected Librarian ondutyLibrarian;
-    protected Technician ondutyTechnician;
+    public Librarian ondutyLibrarian;
+    public Technician ondutyTechnician;
 
     Library() {
         this.artSection = new ArrayList<LibraryCollection>();
@@ -89,7 +89,7 @@ public class Library {
         Date studentDOB = new Date(1000);
         SSN studentSSN = new SSN("552-35-2934");
         Student student = new Student("Andrew Stormer", "502 Kentucky Blvd", studentDOB, "abspp8@umsystem.edu", studentSSN);
-        
+
         Date professorDOB = new Date(1000);
         SSN professorSSN = new SSN("321-78-4556");
         Professor professor = new Professor("Dr. Jones", "1312 Providence Rd", professorDOB, "cjones@umsystem.edu", professorSSN);

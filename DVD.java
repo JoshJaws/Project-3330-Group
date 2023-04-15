@@ -1,6 +1,7 @@
 import java.util.Date;
 
 
+//Journals have an ISBN number and are by default in the arts section, but can be laws and sciences as well. 
 public class DVD extends LibraryCollection {
     private int ISBN;
 

@@ -2,7 +2,10 @@ import java.util.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
+/* 
+ * This class controls what happens at day 12, 14 and so on. The time in between these events is controlled by the
+ * timer.schedule call.
+*/ 
 class Helper extends TimerTask {
     public int daycount = 12;
     public Librarian librarian;
@@ -24,7 +27,9 @@ class Helper extends TimerTask {
     }
 }
 
-
+/*
+ * Abstract class with the ability to be borrowed and returned from a library by a member
+ */
 public abstract class LibraryCollection {
     protected String title;
     protected Date dateRented;
@@ -42,7 +47,7 @@ public abstract class LibraryCollection {
     public void starttimer(Librarian librarian, Member member) {
         this.timer = new Timer();
         TimerTask task = new Helper(librarian, member, this);
-        this.timer.schedule(task, 10000, 1000);
+        this.timer.schedule(task, 10000, 1000); //2nd paramter is time it takes for the first task to happen, 3rd is time to repeat task
     }
     public void stoptimer() {
         this.timer.cancel();

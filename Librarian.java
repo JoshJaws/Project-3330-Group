@@ -1,7 +1,11 @@
 import librarypackage.SSN;
 import java.util.*;
 
-
+/*
+ * Librarians are assinged a library to supervise. For that library they are responsible for giving memberships to
+ * people and making them their correct member status. Libarians are also responsible for sending emails to members
+ * who may have overdue items, and removing items from the library.
+ */
 public class Librarian extends Employee {
     Library libraryToSupervise;
 

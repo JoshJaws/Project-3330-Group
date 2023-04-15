@@ -1,7 +1,7 @@
 import librarypackage.SSN;
 import java.util.*;
 
-
+//Professors can supervise multiple students and have all the capabilities of a member
 public class Professor extends Member {
     public ArrayList<Student> students;
 

@@ -1,6 +1,6 @@
 import java.util.Date;
 
-
+//Journals have an ISSN number and are by default in the laws section, but can be arts and sciences as well. 
 public class Journal extends LibraryCollection {
     private int ISSN;
 

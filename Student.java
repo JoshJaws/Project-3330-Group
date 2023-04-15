@@ -2,6 +2,7 @@ import librarypackage.SSN;
 import java.util.Date;
 
 
+//Students can only have 1 professor and have all the capabilities of a member
 public class Student extends Member {
     Professor advisor;
 
