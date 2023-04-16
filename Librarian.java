@@ -42,23 +42,23 @@ public class Librarian extends Employee {
             member.moneyOwed += 1;
         }
     }
-    public void fetchItem(LibraryCollection item) {
+    public void removeItemFromCollection(LibraryCollection item) {
         switch (item.section) {
             case ARTS:
             if (this.libraryToSupervise.artSection.contains(item))
-                this.libraryToSupervise.artSection.remove(item);
+                this.libraryToSupervise.artSection.remove(item.title.hashCode());
             break;
             case SCIENCES:
             if (this.libraryToSupervise.scienceSection.contains(item))
-                this.libraryToSupervise.scienceSection.remove(item);
+                this.libraryToSupervise.scienceSection.remove(item.title.hashCode());
             break;
             case NEWSPAPERS:
             if (this.libraryToSupervise.newspaperSection.contains(item))
-                this.libraryToSupervise.newspaperSection.remove(item);
+                this.libraryToSupervise.newspaperSection.remove(item.title.hashCode());
             break;
             case LAWS:
             if (this.libraryToSupervise.lawSection.contains(item))
-                this.libraryToSupervise.lawSection.remove(item);
+                this.libraryToSupervise.lawSection.remove(item.title.hashCode());
             break;
         }
     }

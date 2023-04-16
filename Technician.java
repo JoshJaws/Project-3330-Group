@@ -23,16 +23,16 @@ public class Technician extends Employee {
         }
         switch (item.section) {
             case ARTS:
-                this.libraryToSupervise.artSection.add(item);
+                this.libraryToSupervise.artSection.put(item.title.hashCode(), item);
                 break;
             case SCIENCES:
-                this.libraryToSupervise.scienceSection.add(item);
+                this.libraryToSupervise.scienceSection.put(item.title.hashCode(), item);
                 break;
             case NEWSPAPERS:
-                this.libraryToSupervise.newspaperSection.add(item);
+                this.libraryToSupervise.newspaperSection.put(item.title.hashCode(), item);
                 break;
             case LAWS:
-                this.libraryToSupervise.lawSection.add(item);
+                this.libraryToSupervise.lawSection.put(item.title.hashCode(), item);
                 break;
         }
     }

@@ -12,10 +12,10 @@ enum Section {
 
 public class Library {
     //ondutyTechnician controls adding books, ondutyTechnican handles renting books
-    public List<LibraryCollection> artSection;
-    public List<LibraryCollection> scienceSection;
-    public List<LibraryCollection> newspaperSection;
-    public List<LibraryCollection> lawSection;
+    public Hashtable<Integer, LibraryCollection> artSection;
+    public Hashtable<Integer, LibraryCollection> scienceSection;
+    public Hashtable<Integer, LibraryCollection> newspaperSection;
+    public Hashtable<Integer, LibraryCollection> lawSection;
 
     public List<Member> members;
     public List<Employee> employees;
@@ -24,10 +24,10 @@ public class Library {
     public Technician ondutyTechnician;
 
     Library() {
-        this.artSection = new ArrayList<LibraryCollection>();
-        this.scienceSection = new ArrayList<LibraryCollection>();
-        this.newspaperSection = new ArrayList<LibraryCollection>();
-        this.lawSection = new ArrayList<LibraryCollection>();
+        this.artSection = new Hashtable<Integer, LibraryCollection>();
+        this.scienceSection = new Hashtable<Integer, LibraryCollection>();
+        this.newspaperSection = new Hashtable<Integer, LibraryCollection>();
+        this.lawSection = new Hashtable<Integer, LibraryCollection>();
 
         this.members = new ArrayList<Member>();
         this.employees = new ArrayList<Employee>();
@@ -36,10 +36,10 @@ public class Library {
         this.setTechnician(null);
     }
     Library(Librarian librarian, Technician technician) {
-        this.artSection = new ArrayList<LibraryCollection>();
-        this.scienceSection = new ArrayList<LibraryCollection>();
-        this.newspaperSection = new ArrayList<LibraryCollection>();
-        this.lawSection = new ArrayList<LibraryCollection>();
+        this.artSection = new Hashtable<Integer, LibraryCollection>();
+        this.scienceSection = new Hashtable<Integer, LibraryCollection>();
+        this.newspaperSection = new Hashtable<Integer, LibraryCollection>();
+        this.lawSection = new Hashtable<Integer, LibraryCollection>();
 
         this.members = new ArrayList<Member>();
         this.employees = new ArrayList<Employee>();
@@ -78,6 +78,20 @@ public class Library {
             return;
         }
         this.employees.add(technician);
+    }
+    public LibraryCollection getItem(Section section, String name) {
+        switch (section) {
+            case ARTS:
+                return this.artSection.get(name.hashCode());
+            case SCIENCES:
+                return this.scienceSection.get(name.hashCode());       
+            case NEWSPAPERS:
+                return this.newspaperSection.get(name.hashCode());
+            case LAWS:
+                return this.lawSection.get(name.hashCode());  
+            default:
+                return null;
+        }
     }
 
     public static void main(String args[]) {   
@@ -122,7 +136,7 @@ public class Library {
         student.borrowItem(library, b1);
         student.borrowItem(library, dvd1);
         student.borrowItem(library, j1);
-        
+
         professor.superviseStudent(student);
         professor.borrowItem(library, dvd1);
         professor.borrowItem(library, b2);

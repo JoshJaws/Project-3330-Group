@@ -26,13 +26,13 @@ public class Member extends Person {
     public void borrowItem(Library library, LibraryCollection item) {
         if (materials.size() == 5) {
             System.out.println("Sorry, we cannot let you borrow more than 5 items. Please return another item if you would like to borrow more!");
-            }
+    }
         if (item.isBorrowed == false) {
             if (materials == null) {
                 materials = new Hashtable<>();
             }
             materials.put(item, materials.size()+1);
-            library.ondutyLibrarian.fetchItem(item);
+            library.ondutyLibrarian.removeItemFromCollection(item);
             item.borrowItem(library, this);
             return;
         }

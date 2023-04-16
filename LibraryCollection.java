@@ -40,14 +40,13 @@ public abstract class LibraryCollection {
 
     protected Timer timer;
     
-
     public abstract void borrowItem(Library library, Member member);
     public abstract void returnItem();
 
     public void starttimer(Librarian librarian, Member member) {
         this.timer = new Timer();
         TimerTask task = new Helper(librarian, member, this);
-        this.timer.schedule(task, 10000, 1000); //2nd paramter is time it takes for the first task to happen, 3rd is time to repeat task
+        this.timer.schedule(task, 10000, 1000); //2nd parameter is time it takes for the first task to happen, 3rd is time to repeat task
     }
     public void stoptimer() {
         this.timer.cancel();
