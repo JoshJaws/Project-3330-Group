@@ -40,9 +40,9 @@ public class Library {
         this.scienceSection = new Hashtable<Integer, LibraryCollection>();
         this.newspaperSection = new Hashtable<Integer, LibraryCollection>();
         this.lawSection = new Hashtable<Integer, LibraryCollection>();
+        
         this.members = new Hashtable<Integer, Member>();
         this.employees = new Hashtable<Integer, Employee>();
-
 
         this.setLibrarian(librarian);
         this.setTechnician(technician);
@@ -119,6 +119,7 @@ public class Library {
         SSN librarianSSN = new SSN("111-22-3333");
         Date librarianDOB = new Date(100);
         Librarian librarian = new Librarian("Mrs. Scott", "319 Southshore Rd", librarianDOB, "gscottumsystem.edu", librarianSSN, library);
+        library.addLibrarian(librarian);
 
         Date studentDOB = new Date(1000);
         SSN studentSSN = new SSN("552-35-2934");
@@ -138,14 +139,14 @@ public class Library {
 
         Book b1 = new Book("National Geographic", 12, Section.SCIENCES, 20);
         Book b2 = new Book("Constitution", 55, Section.LAWS, 25);
-
         DVD dvd1 = new DVD("Pulp Fiction", 1023, Section.ARTS, 15);
         Newspaper n1 = new Newspaper("Columbia Tribune", 2023, Section.NEWSPAPERS, 5);
         Journal j1 = new Journal("Someones Journal", 3219, Section.SCIENCES, 100);
 
-        library.setLibrarian(librarian);
         library.addLibrarian(librarian2);
-        library.setTechnician(technician);
+        library.addTechnician(technician);
+        library.addMember(student);
+        library.addMember(professor);
 
         library.ondutyTechnician.addItemToLibrary(b1);
         library.ondutyTechnician.addItemToLibrary(b2);
@@ -158,6 +159,7 @@ public class Library {
         student.borrowItem(library, j1);
 
         professor.superviseStudent(student);
+        
         professor.borrowItem(library, dvd1);
         professor.borrowItem(library, b2);
         professor.borrowItem(library, n1);

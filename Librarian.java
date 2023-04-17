@@ -21,12 +21,24 @@ public class Librarian extends Employee {
         Member newMember = new Member(person.name, person.address, person.dob, person.email, person.ssn);
         this.libraryToSupervise.addMember(newMember);
     }
+    public void makeMember(String name, String address, Date dob, String email, SSN ssn, Library library) {
+        Professor newProfessor = new Professor(name, address, dob, email, ssn);
+        this.libraryToSupervise.addMember(newProfessor);
+    }
     public void makeProfessor(Member member) {
         Professor newProfessor = new Professor(member.name, member.address, member.dob, member.email, member.ssn);
         this.libraryToSupervise.addMember(newProfessor);
     }
+    public void makeProfessor(String name, String address, Date dob, String email, SSN ssn, Library library) {
+        Professor newProfessor = new Professor(name, address, dob, email, ssn);
+        this.libraryToSupervise.addMember(newProfessor);
+    }
     public void makeStudent(Member member) {
         Student newStudent = new Student(member.name, member.address, member.dob, member.email, member.ssn);
+        this.libraryToSupervise.addMember(newStudent);
+    }
+    public void makeStudent(String name, String address, Date dob, String email, SSN ssn, Library library) {
+        Student newStudent = new Student(name, address, dob, email, ssn);
         this.libraryToSupervise.addMember(newStudent);
     }
     public void sendReminder(Member member, LibraryCollection item, int daycount) {

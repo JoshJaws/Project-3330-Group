@@ -23,7 +23,6 @@ public class Journal extends LibraryCollection {
         this.memberInformation = member.toString();
         this.starttimer(library.ondutyLibrarian, member);
     }
-    @Override
     public void returnItem() {
         this.isBorrowed = false;
         this.stoptimer();
