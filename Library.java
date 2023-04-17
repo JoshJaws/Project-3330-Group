@@ -103,7 +103,14 @@ public class Library {
             case LAWS:
                 return this.lawSection.get(name.hashCode());  
             default:
-                return null;
+                if (this.artSection.containsKey(name.hashCode()))
+                    return this.artSection.get(name.hashCode());
+                else if (this.scienceSection.containsKey(name.hashCode()))
+                    return this.scienceSection.get(name.hashCode());    
+                if (this.newspaperSection.containsKey(name.hashCode()))
+                    return this.newspaperSection.get(name.hashCode());
+                else 
+                    return this.lawSection.get(name.hashCode());      
         }
     }
 

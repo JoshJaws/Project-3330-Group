@@ -26,7 +26,39 @@ public class Member extends Person {
     public void borrowItem(Library library, LibraryCollection item) {
         if (materials.size() == 5) {
             System.out.println("Sorry, we cannot let you borrow more than 5 items. Please return another item if you would like to borrow more!");
+        }
+        if (item.isBorrowed == false) {
+            if (materials == null) {
+                materials = new Hashtable<>();
+            }
+            materials.put(item.title.hashCode(), item);
+            library.ondutyLibrarian.removeItemFromCollection(item);
+            item.borrowItem(library, this);
+            return;
+        }
+        System.out.println("Item is already being borrowed!");
     }
+    public void borrowItem(Library library, String name) {
+        if (materials.size() == 5) {
+            System.out.println("Sorry, we cannot let you borrow more than 5 items. Please return another item if you would like to borrow more!");
+        }
+        LibraryCollection item = library.getItem(null, name);
+        if (item.isBorrowed == false) {
+            if (materials == null) {
+                materials = new Hashtable<>();
+            }
+            materials.put(item.title.hashCode(), item);
+            library.ondutyLibrarian.removeItemFromCollection(item);
+            item.borrowItem(library, this);
+            return;
+        }
+        System.out.println("Item is already being borrowed!");
+    }
+    public void borrowItem(Library library, Section section, String name) {
+        if (materials.size() == 5) {
+            System.out.println("Sorry, we cannot let you borrow more than 5 items. Please return another item if you would like to borrow more!");
+        }
+        LibraryCollection item = library.getItem(section, name);
         if (item.isBorrowed == false) {
             if (materials == null) {
                 materials = new Hashtable<>();

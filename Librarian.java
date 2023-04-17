@@ -27,22 +27,21 @@ public class Librarian extends Employee {
     }
     public void makeStudent(Member member) {
         Student newStudent = new Student(member.name, member.address, member.dob, member.email, member.ssn);
+        this.libraryToSupervise.addMember(newStudent);
     }
     public void sendReminder(Member member, LibraryCollection item, int daycount) {
-        if (daycount == 12) {
+        if (daycount == 12)
             System.out.printf("Sent email to %s to remind %s to remind them their item is due in 2 days!\n", member.email, member.name);
-        } else if (daycount == 14) {
+        else
             System.out.printf("Sent email to %s to remind %s to remind them their item is due!\nTomorrow we will start adding a fee of $1 for each day not returned.\n", member.email, member.name);
-        }
     }
     public void addFees(Member member, LibraryCollection item, int daycount) {
         if (daycount == 31) {
             member.moneyOwed += item.price;
             item.stoptimer();
             System.out.printf("Item not returned within a month of checking out. Current fees for %s: $%f\n", member.name, member.moneyOwed);
-        } else if (daycount > 14 && daycount < 31) {
+        } else 
             member.moneyOwed += 1;
-        }
     }
     public void removeItemFromCollection(LibraryCollection item) {
         switch (item.section) {
