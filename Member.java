@@ -16,16 +16,24 @@ public class Member extends Person {
         super();
         materials = new Hashtable<>();
         moneyOwed = 0;
+        this.ID = this.toString().hashCode();
     }
     Member(String name, String address, Date dob, String email, SSN ssn) {
         super(name, address, dob, email, ssn);
         materials = new Hashtable<>();
         moneyOwed = 0;
-        this.ID =this.toString().hashCode();
+        this.setID();
+    }
+    public void setID () {
+        this.ID = this.toString().hashCode();
+    }
+    public int getID() {
+        return this.ID;
     }
     public void borrowItem(Library library, LibraryCollection item) {
         if (materials.size() == 5) {
             System.out.println("Sorry, we cannot let you borrow more than 5 items. Please return another item if you would like to borrow more!");
+            return;
         }
         if (item.isBorrowed == false) {
             if (materials == null) {
