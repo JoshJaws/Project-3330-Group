@@ -11,15 +11,15 @@ enum Section {
 
 
 public class Library {
-    //ondutyTechnician controls adding books, ondutyTechnican handles renting books
-    public Hashtable<Integer, LibraryCollection> artSection;
-    public Hashtable<Integer, LibraryCollection> scienceSection;
+    public Hashtable<Integer, LibraryCollection> artSection; //hashtable keyed using item.title.hashCode()
+    public Hashtable<Integer, LibraryCollection> scienceSection; //this can be thought of as bookshelves in different sections of the library
     public Hashtable<Integer, LibraryCollection> newspaperSection;
     public Hashtable<Integer, LibraryCollection> lawSection;
 
-    public List<Member> members;
-    public List<Employee> employees;
+    private Hashtable<Integer, Member> members;
+    private Hashtable<Integer, Employee> employees;
 
+    //ondutyTechnician controls adding books, ondutyTechnican handles renting books
     public Librarian ondutyLibrarian;
     public Technician ondutyTechnician;
 
@@ -29,8 +29,8 @@ public class Library {
         this.newspaperSection = new Hashtable<Integer, LibraryCollection>();
         this.lawSection = new Hashtable<Integer, LibraryCollection>();
 
-        this.members = new ArrayList<Member>();
-        this.employees = new ArrayList<Employee>();
+        this.members = new Hashtable<Integer, Member>();
+        this.employees = new Hashtable<Integer, Employee>();
 
         this.setLibrarian(null);
         this.setTechnician(null);
@@ -40,17 +40,26 @@ public class Library {
         this.scienceSection = new Hashtable<Integer, LibraryCollection>();
         this.newspaperSection = new Hashtable<Integer, LibraryCollection>();
         this.lawSection = new Hashtable<Integer, LibraryCollection>();
-
-        this.members = new ArrayList<Member>();
-        this.employees = new ArrayList<Employee>();
+        this.members = new Hashtable<Integer, Member>();
+        this.employees = new Hashtable<Integer, Employee>();
 
 
         this.setLibrarian(librarian);
-        employees.add(librarian);
         this.setTechnician(technician);
-        employees.add(technician);
     }
 
+    public void addMember(Member member) {
+        this.members.put(member.name.hashCode(), member);
+    }
+    public Member getMember(String name) {
+        return this.members.get(name.hashCode());
+    }
+    public void AddEmployee(Employee employee) {
+        this.employees.put(employee.name.hashCode(), employee);
+    }
+    public Employee getEmployee(String name) {
+        return this.employees.get(name.hashCode());
+    }
     public void setLibrarian(Librarian librarian) {
         this.ondutyLibrarian = librarian;
     }
@@ -64,20 +73,24 @@ public class Library {
         return this.ondutyTechnician;
     }
     public void addLibrarian(Librarian librarian) {
+        if (!(this.employees.containsKey(librarian.name.hashCode()))) {
+            this.AddEmployee(librarian);
+        }
         librarian.libraryToSupervise = this;
         if (this.ondutyLibrarian == null) {
             this.setLibrarian(librarian);
             return;
         }
-        this.employees.add(librarian);
     }
     public void addTechnician(Technician technician) {
+        if (!(this.employees.containsKey(technician.name.hashCode()))) {
+            this.AddEmployee(technician);
+        }
         technician.libraryToSupervise = this;
         if (this.ondutyLibrarian == null) {
             this.setTechnician(technician);
             return;
         }
-        this.employees.add(technician);
     }
     public LibraryCollection getItem(Section section, String name) {
         switch (section) {

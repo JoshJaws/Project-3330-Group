@@ -2,7 +2,7 @@ package librarypackage;
 
 
 public class SSN {
-    public String ssn = "";
+    private String ssn = "";
 
     public SSN(String ssn) {
         this.setSSN(ssn);

@@ -18,13 +18,15 @@ public class Librarian extends Employee {
         this.libraryToSupervise = library;
     }
     public void giveMembership(Person person) {
-        person = new Member(person.name, person.address, person.dob, person.email, person.ssn);
+        Member newMember = new Member(person.name, person.address, person.dob, person.email, person.ssn);
+        this.libraryToSupervise.addMember(newMember);
     }
-    public void makeProfessor(Member person) {
-        person = new Professor(person.name, person.address, person.dob, person.email, person.ssn);
+    public void makeProfessor(Member member) {
+        Professor newProfessor = new Professor(member.name, member.address, member.dob, member.email, member.ssn);
+        this.libraryToSupervise.addMember(newProfessor);
     }
-    public void makeStudent(Member person) {
-        person = new Student(person.name, person.address, person.dob, person.email, person.ssn);
+    public void makeStudent(Member member) {
+        Student newStudent = new Student(member.name, member.address, member.dob, member.email, member.ssn);
     }
     public void sendReminder(Member member, LibraryCollection item, int daycount) {
         if (daycount == 12) {

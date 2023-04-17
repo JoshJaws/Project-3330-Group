@@ -8,7 +8,7 @@ import librarypackage.SSN;
  * Members can be Students or Professors, or they will be an external member if they are neither.
  */
 public class Member extends Person {
-    protected Hashtable<LibraryCollection, Integer> materials;
+    protected Hashtable<Integer, LibraryCollection> materials; //keyed by item.title.hashCode() so it can be found with only the title
     protected double moneyOwed;
     protected int ID;
 
@@ -31,7 +31,7 @@ public class Member extends Person {
             if (materials == null) {
                 materials = new Hashtable<>();
             }
-            materials.put(item, materials.size()+1);
+            materials.put(item.title.hashCode(), item);
             library.ondutyLibrarian.removeItemFromCollection(item);
             item.borrowItem(library, this);
             return;
@@ -39,7 +39,7 @@ public class Member extends Person {
         System.out.println("Item is already being borrowed!");
     }
     public void returnItem(LibraryCollection item) {
-        materials.remove(item);
+        materials.remove(item.title.hashCode());
         item.returnItem();
     }
 }
