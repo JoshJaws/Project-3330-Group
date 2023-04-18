@@ -36,9 +36,6 @@ public class Member extends Person {
             return;
         }
         if (item.isBorrowed == false) {
-            if (materials == null) {
-                materials = new Hashtable<>();
-            }
             materials.put(item.title.hashCode(), item);
             library.ondutyLibrarian.removeItemFromCollection(item);
             item.borrowItem(library, this);
@@ -52,9 +49,6 @@ public class Member extends Person {
         }
         LibraryCollection item = library.getItem(null, name);
         if (item.isBorrowed == false) {
-            if (materials == null) {
-                materials = new Hashtable<>();
-            }
             materials.put(item.title.hashCode(), item);
             library.ondutyLibrarian.removeItemFromCollection(item);
             item.borrowItem(library, this);

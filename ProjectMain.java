@@ -63,7 +63,7 @@ public class ProjectMain {
             }
             System.out.print("The membership ID is: " +library.getMember(name).getID());
             System.out.println("New Member Successfully Saved to database.");
-            };
+        }
         public static void newCollectionEvent(){};
         public static void newRemoveMemberEvent(){};
         public static void newRemoveCollectionEvent(){};
