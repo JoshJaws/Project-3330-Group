@@ -1,5 +1,4 @@
 import java.util.*;
-import librarypackage.SSN;
 
 
 enum Section {
@@ -11,6 +10,8 @@ enum Section {
 
 
 public class Library {
+
+    //Declare new hash tables 
     public Hashtable<Integer, LibraryCollection> artSection; //hashtable keyed using item.title.hashCode()
     public Hashtable<Integer, LibraryCollection> scienceSection; //this can be thought of as bookshelves in different sections of the library
     public Hashtable<Integer, LibraryCollection> newspaperSection;
@@ -19,11 +20,36 @@ public class Library {
     private Hashtable<Integer, Member> members;
     private Hashtable<Integer, Employee> employees;
 
+    //Add getter to use this hashtables to test
+    public Hashtable<Integer,Member> getMemberTable(){
+        return members;
+    }
+
+    public Hashtable<Integer,Employee> getEmployeeTable(){
+        return employees;
+    }
+
+    //Overload the method, remove member according to object or name string.
+    public void removeMember(Member member) {
+        if(this.members.containsValue(member)){
+            members.remove(member.name.hashCode()); //The hashCode() is from Object class. remove() is a hashtable method.
+        }
+        else System.out.println("There is no such member.");
+    }
+    public void removeMember(String name){
+        if(this.members.contains(name.hashCode())){
+            members.remove(name.hashCode()); //The hashCode() is from Object class. remove() is a hashtable method.
+        }
+        else System.out.println("There is no such member.");
+    }
+
     //ondutyTechnician controls adding books, ondutyTechnican handles renting books
     public Librarian ondutyLibrarian;
     public Technician ondutyTechnician;
 
+    //Library constructor 1: 
     Library() {
+        //Create new hash tables by constructors.
         this.artSection = new Hashtable<Integer, LibraryCollection>();
         this.scienceSection = new Hashtable<Integer, LibraryCollection>();
         this.newspaperSection = new Hashtable<Integer, LibraryCollection>();
@@ -35,6 +61,8 @@ public class Library {
         this.setLibrarian(null);
         this.setTechnician(null);
     }
+
+    //Library constructor 2: (with librarian and technician)
     Library(Librarian librarian, Technician technician) {
         this.artSection = new Hashtable<Integer, LibraryCollection>();
         this.scienceSection = new Hashtable<Integer, LibraryCollection>();
@@ -48,50 +76,66 @@ public class Library {
         this.setTechnician(technician);
     }
 
+    // Put new elements to hash tables (KEY-VALUE pair):
+    // The first member.name.hashcode() is the KEY, member is the VALUE
     public void addMember(Member member) {
         this.members.put(member.name.hashCode(), member);
     }
     public Member getMember(String name) {
         return this.members.get(name.hashCode());
     }
+
+    //Add new Employee object to the Employees hash table
     public void AddEmployee(Employee employee) {
         this.employees.put(employee.name.hashCode(), employee);
     }
     public Employee getEmployee(String name) {
         return this.employees.get(name.hashCode());
     }
+
+    //set/get Librarian 
     public void setLibrarian(Librarian librarian) {
         this.ondutyLibrarian = librarian;
     }
     public Librarian getLibrarian() {
         return this.ondutyLibrarian;
     }
+
+    //set/get Technician 
     public void setTechnician(Technician technician) {
         this.ondutyTechnician = technician;
     }
     public Technician getTechnician() {
         return this.ondutyTechnician;
     }
+
+    /*Add librarian: (according to this function, there could only be a unique on duty librarian.)
+     * 1. Set the librarian's supervising library as this library
+     * 2. Add the new librarian to the employee list
+     * 3. Set the librarian as the on duty Libararian if there was no on duty librarian before
+    */
     public void addLibrarian(Librarian librarian) {
-        if ((this.employees.contains(librarian)) == false) {
-            this.AddEmployee(librarian);
-        }
         librarian.libraryToSupervise = this;
+        // if ((this.employees.contains(librarian)) == false) {
+            this.AddEmployee(librarian);
+        // }
         if (this.ondutyLibrarian == null) {
             this.setLibrarian(librarian);
             return;
         }
     }
     public void addTechnician(Technician technician) {
-        if ((this.employees.containsKey(technician.name.hashCode())) == false) {
-            this.AddEmployee(technician);
-        }
         technician.libraryToSupervise = this;
+        // if ((this.employees.containsKey(technician.name.hashCode())) == false) {
+            this.AddEmployee(technician);
+        // }
         if (this.ondutyLibrarian == null) {
             this.setTechnician(technician);
             return;
         }
     }
+
+    //According to the section and name's hashcode to get the item from the corresponding hash table.
     public LibraryCollection getItem(Section section, String name) {
         switch (section) {
             case ARTS:
