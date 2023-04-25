@@ -378,35 +378,35 @@ public class ProjectMain {
         ProjectMain.newEmployeeEvent(library);
 
         // Add 3 members ( test borrow etc)
-        ProjectMain.newMemberEvent(library);
-        ProjectMain.newMemberEvent(library);
-        ProjectMain.newMemberEvent(library);
+        // ProjectMain.newMemberEvent(library);
+        // ProjectMain.newMemberEvent(library);
+        // ProjectMain.newMemberEvent(library);
 
-        Hashtable<Integer, Member> memberTable = library.getMemberTable();
-        Hashtable<Integer, Employee> employeeTable = library.getEmployeeTable();
+        // Hashtable<Integer, Member> memberTable = library.getMemberTable();
+        // Hashtable<Integer, Employee> employeeTable = library.getEmployeeTable();
 
-        System.out.println("Employees:");
-        for (Employee employee : employeeTable.values()) {
-            System.out.println(employee.name);
-        }
-        System.out.println("");
+        // System.out.println("Employees:");
+        // for (Employee employee : employeeTable.values()) {
+        // System.out.println(employee.name);
+        // }
+        // System.out.println("");
 
-        System.out.println("Members:");
-        for (Member member : memberTable.values()) {
-            System.out.println(member.name);
-        }
-        System.out.println("");
+        // System.out.println("Members:");
+        // for (Member member : memberTable.values()) {
+        // System.out.println(member.name);
+        // }
+        // System.out.println("");
 
-        // Test remove a member.
-        System.out.println("Test to remove a member:");
-        ProjectMain.newRemoveMemberEvent(library);
-        System.out.println("");
+        // // Test remove a member.
+        // System.out.println("Test to remove a member:");
+        // ProjectMain.newRemoveMemberEvent(library);
+        // System.out.println("");
 
-        System.out.println("Member after deletion:");
-        for (Member member : memberTable.values()) {
-            System.out.println(member.name);
-        }
-        System.out.println("");
+        // System.out.println("Member after deletion:");
+        // for (Member member : memberTable.values()) {
+        // System.out.println(member.name);
+        // }
+        // System.out.println("");
 
         Scanner scanner = new Scanner(System.in);
         int option;
