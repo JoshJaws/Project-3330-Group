@@ -24,20 +24,19 @@ public class Library {
     public Hashtable<Integer,Member> getMemberTable(){
         return members;
     }
-
     public Hashtable<Integer,Employee> getEmployeeTable(){
         return employees;
     }
 
     //Overload the method, remove member according to object or name string.
-    public void removeMember(Member member) {
-        if(this.members.containsValue(member)){
-            members.remove(member.name.hashCode()); //The hashCode() is from Object class. remove() is a hashtable method.
-        }
-        else System.out.println("There is no such member.");
-    }
+    // public void removeMember(Member member) {
+    //     if(this.members.containsValue(member.name.hashCode())){
+    //         this.members.remove(member.name.hashCode()); //The hashCode() is from Object class. remove() is a hashtable method.
+    //     }
+    //     else System.out.println("There is no such member.");
+    // }
     public void removeMember(String name){
-        if(this.members.contains(name.hashCode())){
+        if(this.members.containsKey(name.hashCode())){
             members.remove(name.hashCode()); //The hashCode() is from Object class. remove() is a hashtable method.
         }
         else System.out.println("There is no such member.");
@@ -116,9 +115,7 @@ public class Library {
     */
     public void addLibrarian(Librarian librarian) {
         librarian.libraryToSupervise = this;
-        // if ((this.employees.contains(librarian)) == false) {
-            this.AddEmployee(librarian);
-        // }
+        this.AddEmployee(librarian);
         if (this.ondutyLibrarian == null) {
             this.setLibrarian(librarian);
             return;
