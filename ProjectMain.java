@@ -288,30 +288,7 @@ public class ProjectMain {
         LibraryCollection item = library.getItem(section, name);
 
         borrower.borrowItem(library, item);
-
-        // System.out.println("Enter the ISBN:");
-        // String ISBN = scn.nextLine();
-
-        // System.out.println("Enter the price");
-        // String priceString = scn.nextLine();
-        // try{
-        // float price = Float.parseFloat(priceString);
-        // }catch(NumberFormatException e){
-        // System.out.println("Invalid Input! The input need to be a float number.");
-        // }
-        // float price = Float.parseFloat(priceString);
-
-        // // Book book_borrowed=new lBook(title,ISBN,section,price);
-        // if(sectionString.equals("A")){
-        // library.artSection.Books
-        // }else if(sectionString.equals("S")){
-        // section = Section.SCIENCES;
-        // }else if(sectionString.equals("L")){
-        // section = Section.LAWS;
-        // }else{
-        // section = Section.NEWSPAPERS;
-        // }
-    };
+    }
 
     public static void newReturnEvent(Library library) {
         Scanner scn = new Scanner(System.in);
@@ -360,7 +337,7 @@ public class ProjectMain {
         System.out.println("Art section:");
         for (LibraryCollection item : library.artSection.values()) {
             System.out.println("Title: " + item.title);
-            System.out.println();
+            System.out.println("Price: " + item.price);
             System.out.println(" ");
         }
         System.out.println("*****************************");
