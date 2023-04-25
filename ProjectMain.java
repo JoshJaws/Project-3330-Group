@@ -288,7 +288,7 @@ public class ProjectMain {
         LibraryCollection item = library.getItem(section, name);
 
         borrower.borrowItem(library, item);
-    }
+    };
 
     public static void newReturnEvent(Library library) {
         Scanner scn = new Scanner(System.in);
