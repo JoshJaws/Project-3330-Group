@@ -1,6 +1,5 @@
 import java.util.Date;
 
-
 //Journals have an ISBN number and are by default in the arts section, but can be laws and sciences as well. 
 public class DVD extends LibraryCollection {
     private int ISBN;
@@ -12,6 +11,7 @@ public class DVD extends LibraryCollection {
         this.section = Section.ARTS;
         this.price = 10;
     }
+
     DVD(String title, int ISBN, Section section, float price) {
         this.title = title;
         this.ISBN = ISBN;
@@ -19,12 +19,14 @@ public class DVD extends LibraryCollection {
         this.section = section;
         this.price = price;
     }
+
     public void borrowItem(Library library, Member member) {
         this.isBorrowed = true;
         this.dateRented = new Date();
         this.memberInformation = member.toString();
         this.starttimer(library.getLibrarian(), member);
     }
+
     @Override
     public void returnItem() {
         this.isBorrowed = false;
