@@ -26,9 +26,10 @@ public class ProjectMain {
         System.out.println("");
     }
 
+
+
     //Events functions:
 
-    //Wrong: can't add member always throw error
     public static void newMemberEvent(Library library) {
         Scanner scn = new Scanner(System.in);
         System.out.println("Enter Membership info: ");
@@ -129,11 +130,13 @@ public class ProjectMain {
     }
 
     public static void newCollectionEvent() {
-        // Scanner scn = new Scanner(System.in);
-        // System.out.println("Enter new collection info: ");
+        Scanner scn = new Scanner(System.in);
+        System.out.println("Enter new collection info: ");
         
-        // System.out.print("Enter collection Name: ");
-        // String name = scn.nextLine();
+        System.out.print("Enter collection Name: ");
+        String name = scn.nextLine();
+
+        System.out.println();
     };
 
     public static void newRemoveMemberEvent(Library library) {
@@ -147,6 +150,27 @@ public class ProjectMain {
     };
 
     public static void newBorrowsEvent() {
+        String collection;
+        Scanner scn = new Scanner(System.in);
+        while(true){
+            System.out.println("Which kind of collection do you want to borrow?");
+            System.out.println("Books--B   DVD---D  Journal--J  newspaper--N");
+            collection=scn.nextLine();
+            if(collection.equals("B")||collection.equals("D")||collection.equals("J")||collection.equals("N"))
+                break;
+            System.out.println("Invalid input!");
+        }
+
+        String itemSection;
+        while(true){
+            System.out.println("Which section does this item belong to?");
+            System.out.println("Art--A   Science--S  Law--L  newspaper--N");
+            itemSection=scn.nextLine();
+            if(itemSection.equals("A")||itemSection.equals("S")||itemSection.equals("L")||itemSection.equals("N"))
+                break;
+            System.out.println("Invalid input!");
+        }
+
     };
 
     public static void newReturnEvent() {
